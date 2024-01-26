@@ -1,0 +1,2 @@
+rootProject.name = 'mocks-as-code'
+include('app')

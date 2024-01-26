@@ -1,0 +1,7 @@
+name: mocks-as-code
+runtime: java
+description: Config management with Gradle demo
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: java-gradle
