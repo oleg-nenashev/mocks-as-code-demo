@@ -13,6 +13,7 @@ dependencies {
     implementation platform('org.testcontainers:testcontainers-bom:1.19.8')
     implementation(platform("software.amazon.awssdk:bom:2.21.1"))
     implementation("software.amazon.awssdk:s3")
+    implementation 'org.slf4j:slf4j-simple:2.0.9'
 
     testImplementation "org.testcontainers:testcontainers"
     testImplementation "org.testcontainers:junit-jupiter"
@@ -25,7 +26,7 @@ dependencies {
 
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
-    testRuntimeOnly 'org.slf4j:slf4j-simple:2.0.9'
+
 }
 
 application {
