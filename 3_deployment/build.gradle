@@ -7,9 +7,17 @@ repositories {
     mavenLocal()
 }
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+        vendor = JvmVendorSpec.ADOPTIUM
+    }
+}
+
 dependencies {
-    implementation 'com.pulumi:pulumi:(,1.0]'
-    implementation 'com.pulumi:aws:(6.0.2,6.99]'
+    implementation 'com.pulumi:pulumi:0.11.0'
+    implementation 'com.pulumi:aws:6.34.1'
+    implementation 'com.pulumi:aws-native:0.105.0'
     implementation platform('org.testcontainers:testcontainers-bom:1.19.8')
     implementation(platform("software.amazon.awssdk:bom:2.21.1"))
     implementation("software.amazon.awssdk:s3")

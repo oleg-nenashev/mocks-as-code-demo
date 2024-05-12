@@ -286,3 +286,7 @@ config:
   aws:secretKey: test
   aws:skipCredentialsValidation: "true"
   aws:skipRequestingAccountId: "true"
+  aws-native:region: {AWS_REGION}
+  aws-native:s3UsePathStyle: "true"
+  aws-native:secretKey: test
+  aws-native:skipCredentialsValidation: "true"
