@@ -6,10 +6,6 @@ import org.testcontainers.containers.localstack.LocalStackContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
-import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
-import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;
-import software.amazon.awssdk.regions.Region;
-import software.amazon.awssdk.services.s3.S3Client;
 
 import org.testcontainers.containers.localstack.LocalStackContainer.Service;
 
@@ -30,10 +26,19 @@ public class PulumiLocalTest {
     @Container
     static LocalStackContainer localstack = new LocalStackContainer(localstackImage)
             .withServices(Service.S3, Service.SQS);
+    static File WORK_DIR;
 
     @BeforeAll
     static void beforeAll() throws IOException, InterruptedException {
         String QUEUE_NAME = UUID.randomUUID().toString();
+        WORK_DIR = new File(".");
+        PulumiLocalAdapter.configure(localstack, STACK_NAME, WORK_DIR);
+
+
+        // Clean or Init the stack. We use it in parallel, and there might be stale resources Pulumi server does not know how delete from terminated LocalStack
+        // TODO: check status automatically
+        // PulumiLocalAdapter.init(WORK_DIR);
+        // PulumiLocalAdapter.clean(WORK_DIR);
 
         localstack.execInContainer(
         "awslocal",
@@ -65,10 +70,10 @@ public class PulumiLocalTest {
 
     @Test
     public void testClient() throws Exception {
-        final File workDir = new File(".");
+
         // TODO: Move Init to BeforeClass
-        PulumiLocalAdapter.configure(localstack, STACK_NAME, workDir);
-        PulumiLocalAdapter.up(workDir);
+
+        PulumiLocalAdapter.up(WORK_DIR);
     }
 
 }

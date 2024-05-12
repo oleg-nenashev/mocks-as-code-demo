@@ -10,18 +10,13 @@ import org.testcontainers.containers.localstack.LocalStackContainer;
 import java.io.*;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Queue;
 import java.util.concurrent.*;
 import java.util.function.Consumer;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import static java.util.Optional.empty;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.core.Is.is;
-import static org.hamcrest.core.IsNot.not;
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
@@ -31,11 +26,15 @@ public class PulumiLocalAdapter {
     static ExecutorService EXECUTOR_SERVICE = new ThreadPoolExecutor(1, 5, 5, TimeUnit.SECONDS, QUEUE);
 
     static boolean CONFIGURED = false;
+    static String STACK_NAME;
+
+    private static final Logger LOGGER = Logger.getLogger(PulumiLocalAdapter.class.getName());
 
     public static void configure(LocalStackContainer container, String stack, File workDir) throws IOException {
         final PulumiConfig project = PulumiConfig.read(new File(workDir, "../Pulumi.yaml"));
         PulumiConfig.writeTestConfig(container, new File(workDir, "../Pulumi." + stack + ".yaml"));
         CONFIGURED = true;
+        STACK_NAME = stack;
     }
 
     /**
@@ -45,15 +44,26 @@ public class PulumiLocalAdapter {
         run(workDir,"pulumi", "up", "--skip-preview");
     }
 
+    public static void init(File workDir) throws IOException, InterruptedException {
+        run(workDir,"pulumi", "stack", "init", STACK_NAME);
+    }
+
+    public static void clean(File workDir) throws IOException, InterruptedException {
+        run(workDir,"pulumi", "stack", "rm", STACK_NAME);
+    }
+
     public static void cancel(File workDir) throws IOException, InterruptedException {
         run(workDir,"pulumi", "up", "--skip-preview")  ;
     }
 
     public static void run(File workDir, String ... cli) throws IOException, InterruptedException {
         if (!CONFIGURED) {
-            Assert.fail("Pulumi adapter for LocalStack is not configured with " + PulumiLocalAdapter.class + "#configure()");
+            String message = "Pulumi adapter for LocalStack is not configured with " + PulumiLocalAdapter.class + "#configure()";
+            LOGGER.severe(message);
+            Assert.fail(message);
         }
 
+        LOGGER.warning("Running " + Arrays.toString(cli));
         ProcessBuilder builder = new ProcessBuilder();
         builder.command(cli);
         builder.directory(workDir);

@@ -59,6 +59,14 @@ contributions are welcome!
 - [Pulumi and LocalStack — beyond the basics](https://delitescere.medium.com/pulumi-and-localstack-beyond-the-basics-d993f3b94d17) by Josh Graham
 - [Testing AWS service integrations using LocalStack](https://testcontainers.com/guides/testing-aws-service-integrations-using-localstack/)
 
+## When something fails
+
+To force kill the Pulumi stack:
+
+```shell
+pulumi stack rm --force oleg-nenashev/mocks-as-code/mocks-as-code-demo
+```
+
 ## License
 
 Most of the code is licensed under the Apache License v2,
