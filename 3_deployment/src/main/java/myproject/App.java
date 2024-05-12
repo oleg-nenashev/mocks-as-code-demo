@@ -12,13 +12,12 @@ import com.pulumi.aws.ec2.inputs.GetAmiArgs;
 import com.pulumi.aws.ec2.inputs.GetAmiFilterArgs;
 import com.pulumi.aws.ec2.inputs.SecurityGroupIngressArgs;
 import com.pulumi.core.Output;
+import com.pulumi.aws.s3.Bucket;
 import com.pulumi.aws.s3.BucketObject;
 import com.pulumi.aws.s3.BucketObjectArgs;
 import com.pulumi.aws.s3.BucketPolicy;
 import com.pulumi.aws.s3.BucketPolicyArgs;
-import com.pulumi.awsnative.s3.Bucket;
-import com.pulumi.awsnative.s3.BucketArgs;
-import com.pulumi.awsnative.s3.inputs.BucketWebsiteConfigurationArgs;
+
 
 import java.util.List;
 import java.util.Map;
@@ -67,7 +66,7 @@ public class App {
         ctx.export("awsIamSmtpPasswordV4", testAccessKey.sesSmtpPasswordV4());
         */
 
-        ctx.export("bucketName", siteBucket.bucketName());
+        ctx.export("bucketName", siteBucket.bucket());
         ctx.export("bucketPolicy", bucketPolicy.policy());
     }
 }
