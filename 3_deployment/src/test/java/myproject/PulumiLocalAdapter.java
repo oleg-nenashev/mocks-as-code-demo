@@ -26,8 +26,6 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 public class PulumiLocalAdapter {
 
-    public static String DEFAULT_AWS_REGION = "us-east-1";
-
     static BlockingQueue<Runnable> QUEUE = new LinkedBlockingQueue<>();
     static ExecutorService EXECUTOR_SERVICE = new ThreadPoolExecutor(1, 5, 5, TimeUnit.SECONDS, QUEUE);
 
@@ -41,7 +39,7 @@ public class PulumiLocalAdapter {
         builder.directory(workDir);
 
         final PulumiConfig project = PulumiConfig.read(new File(workDir, "../Pulumi.yaml"));
-        PulumiConfig.writeTestConfig(container.getEndpoint().toString(), new File(workDir, "../Pulumi." + stack + ".yaml"));
+        PulumiConfig.writeTestConfig(container, new File(workDir, "../Pulumi." + stack + ".yaml"));
 
         Process process = builder.start();
 
@@ -69,11 +67,14 @@ public class PulumiLocalAdapter {
             return mapper.readValue(pulumiYaml, PulumiConfig.class);
         }
 
-        private static void writeTestConfig(String localStackEndpoint, File destination) throws IOException {
+        private static void writeTestConfig(LocalStackContainer container, File destination) throws IOException {
             final String template = loadConfigTemplate();
             HashMap<String,String> replacements = new HashMap<>();
-            replacements.put("LOCALSTACK_ENDPOINT", localStackEndpoint);
-            replacements.put("AWS_REGION", DEFAULT_AWS_REGION);
+            replacements.put("LOCALSTACK_ENDPOINT", container.getEndpoint().toString());
+            replacements.put("AWS_REGION", container.getRegion());
+            replacements.put("AWS_ACCESS_KEY", container.getAccessKey());
+            replacements.put("AWS_SECRET_KEY", container.getSecretKey());
+
             final String pulumiConfig = update(template, replacements);
 
             try (FileWriter writer = new FileWriter(destination)) {

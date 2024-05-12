@@ -54,6 +54,18 @@ public class App {
                         ).build()
         );
 
+        /* TODO: Add app auth
+        var test = new User("test", UserArgs.builder()
+                .name("test")
+                .path("/test/")
+                .build());
+
+        var testAccessKey = new AccessKey("testAccessKey", AccessKeyArgs.builder()
+                .user(test.name())
+                .build());
+
+        ctx.export("awsIamSmtpPasswordV4", testAccessKey.sesSmtpPasswordV4());
+        */
 
         ctx.export("bucketName", siteBucket.bucketName());
         ctx.export("bucketPolicy", bucketPolicy.policy());
