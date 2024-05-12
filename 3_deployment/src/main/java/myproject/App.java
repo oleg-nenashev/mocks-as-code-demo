@@ -34,7 +34,7 @@ public class App {
                 .mostRecent(true)
                 .build()
         ).applyValue(result -> result.id());
-
+/*
         final var group = new SecurityGroup("web-secgrp", SecurityGroupArgs.builder()
                 .ingress(SecurityGroupIngressArgs.builder()
                         .protocol("tcp")
@@ -44,7 +44,7 @@ public class App {
                         .build())
                 .build()
         );
-
+*/
         // (optional) create a simple web server using the startup
         // script for the instance
 
@@ -56,7 +56,7 @@ public class App {
         final var server = new Instance("web-server-www", InstanceArgs.builder()
                 .tags(Map.of("Name", "web-server-www"))
                 .instanceType(Output.ofRight(com.pulumi.aws.ec2.enums.InstanceType.T2_Micro))
-                .vpcSecurityGroupIds(group.getId().applyValue(List::of))
+//                .vpcSecurityGroupIds(group.getId().applyValue(List::of))
                 .ami(ami)
                 .userData(userData)
                 .build()

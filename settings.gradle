@@ -1,5 +1,15 @@
+plugins {
+    id "com.gradle.develocity" version "3.17.3"
+}
+
 rootProject.name = 'mocks-as-code-workshop'
 
 include('2_testcontainers-demo')
 include('3_deployment')
 
+develocity {
+    buildScan {
+        termsOfUseUrl = "https://gradle.com/help/legal-terms-of-use"
+        termsOfUseAgree = "yes"
+    }
+}

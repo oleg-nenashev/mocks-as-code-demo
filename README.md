@@ -5,7 +5,9 @@ In this demo, we build a full-Java implementation for several key aspects of an 
 - The application itself
 - Test Automation code - with Testcontainers, WireMock, LocalStack and other Java tools
 - Configuration Management - with [Pulumi for Java](https://www.pulumi.com/docs/languages-sdks/java/)
-- All the build logic - with [Gradle Build Tool](https://gradle.org/), a.k.a Gradle
+- All the build logic - with [Gradle Build Tool](https://gradle.org/), a.k.a Gradle.
+  We will also use [Gradle Build Scan](https://docs.gradle.org/current/userguide/build_scans.html) for troubleshooting
+  the Pulumi SDK issues.
 
 This demo is created for the Mocks as Code workshop by Oleg Nenashev.
 
