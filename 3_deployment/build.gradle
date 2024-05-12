@@ -1,0 +1,39 @@
+plugins {
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+    implementation 'com.pulumi:pulumi:(,1.0]'
+    implementation 'com.pulumi:aws:(6.0.2,6.99]'
+    implementation platform('org.testcontainers:testcontainers-bom:1.19.8')
+    implementation(platform("software.amazon.awssdk:bom:2.21.1"))
+    implementation("software.amazon.awssdk:s3")
+
+    testImplementation "org.testcontainers:testcontainers"
+    testImplementation "org.testcontainers:junit-jupiter"
+    testImplementation "org.testcontainers:localstack"
+    testImplementation 'org.junit.jupiter:junit-jupiter-api'
+    testImplementation 'cloud.localstack:localstack-utils:0.2.15'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.7.1'
+    testImplementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.16.0'
+    testImplementation 'com.fasterxml.jackson.core:jackson-databind:2.16.0'
+
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    testRuntimeOnly 'org.slf4j:slf4j-simple:2.0.9'
+}
+
+application {
+    mainClass = project.hasProperty("mainClass")
+            ? project.getProperty("mainClass")
+            : 'myproject.App'
+}
+
+test {
+    useJUnitPlatform()
+}

@@ -355,7 +355,11 @@ MigrationBackup/
 # Gradle
 .gradle
 gradle/
-app/build
+1_application/build
+2_testcontainers-demo/build
+3_deployment/build
+Pulumi.*.yaml
+
 
 # IDEA
 .idea

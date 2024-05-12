@@ -5,3 +5,6 @@ config:
   pulumi:tags:
     value:
       pulumi:template: java-gradle
+  aws:region:
+    description: The AWS region to deploy into
+    value: us-east-1
