@@ -3,6 +3,7 @@ package myproject;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
+import org.junit.Assert;
 import org.testcontainers.containers.localstack.LocalStackContainer;
 
 
@@ -29,17 +30,33 @@ public class PulumiLocalAdapter {
     static BlockingQueue<Runnable> QUEUE = new LinkedBlockingQueue<>();
     static ExecutorService EXECUTOR_SERVICE = new ThreadPoolExecutor(1, 5, 5, TimeUnit.SECONDS, QUEUE);
 
+    static boolean CONFIGURED = false;
+
+    public static void configure(LocalStackContainer container, String stack, File workDir) throws IOException {
+        final PulumiConfig project = PulumiConfig.read(new File(workDir, "../Pulumi.yaml"));
+        PulumiConfig.writeTestConfig(container, new File(workDir, "../Pulumi." + stack + ".yaml"));
+        CONFIGURED = true;
+    }
+
     /**
      * Runs Pulumi Up
      */
-    public static void up(LocalStackContainer container, String stack, File workDir) throws IOException, InterruptedException {
+    public static void up(File workDir) throws IOException, InterruptedException {
+        run(workDir,"pulumi", "up", "--skip-preview");
+    }
+
+    public static void cancel(File workDir) throws IOException, InterruptedException {
+        run(workDir,"pulumi", "up", "--skip-preview")  ;
+    }
+
+    public static void run(File workDir, String ... cli) throws IOException, InterruptedException {
+        if (!CONFIGURED) {
+            Assert.fail("Pulumi adapter for LocalStack is not configured with " + PulumiLocalAdapter.class + "#configure()");
+        }
+
         ProcessBuilder builder = new ProcessBuilder();
-        builder.command("pulumi", "up", "--skip-preview");
-
+        builder.command(cli);
         builder.directory(workDir);
-
-        final PulumiConfig project = PulumiConfig.read(new File(workDir, "../Pulumi.yaml"));
-        PulumiConfig.writeTestConfig(container, new File(workDir, "../Pulumi." + stack + ".yaml"));
 
         Process process = builder.start();
 
@@ -50,7 +67,7 @@ public class PulumiLocalAdapter {
 
         assertDoesNotThrow(() -> stdout.get(10, TimeUnit.SECONDS));
         assertDoesNotThrow(() -> stderr.get(10, TimeUnit.SECONDS));
-        assertEquals(0, exitCode);
+        assertEquals("Exit code is not null for: " + Arrays.toString(cli), 0, exitCode);
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)

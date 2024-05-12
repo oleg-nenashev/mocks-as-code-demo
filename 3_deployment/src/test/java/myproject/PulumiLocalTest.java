@@ -65,7 +65,10 @@ public class PulumiLocalTest {
 
     @Test
     public void testClient() throws Exception {
-        PulumiLocalAdapter.up(localstack, STACK_NAME, new File("."));
+        final File workDir = new File(".");
+        // TODO: Move Init to BeforeClass
+        PulumiLocalAdapter.configure(localstack, STACK_NAME, workDir);
+        PulumiLocalAdapter.up(workDir);
     }
 
 }
