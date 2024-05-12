@@ -1,9 +1,12 @@
 # Mocks as Code for Configuration Management. Demo
 
-In this demo, we build a full-Java implementation for several key aspects of an application:
+Can you do full-stack development with Java? You can!
+And what about full-stack platform engineering? You can do it too!
+In this demo, we build a full-Java implementation for all key aspects of an application:
 
-- The application itself
-- Test Automation code - with Testcontainers, WireMock, LocalStack and other Java tools
+- The application itself - Spring Boot
+- Build automation - Gradle Build Tool, aka Gradle
+- Test automation - with Testcontainers, WireMock, LocalStack and other Java tools
 - Configuration Management - with [Pulumi for Java](https://www.pulumi.com/docs/languages-sdks/java/)
 - All the build logic - with [Gradle Build Tool](https://gradle.org/), a.k.a Gradle.
   We will also use [Gradle Build Scan](https://docs.gradle.org/current/userguide/build_scans.html) for troubleshooting
@@ -15,11 +18,12 @@ Golang, Python or any other language supported by Pulumi and Testcontainers.
 
 ## Prerequisites
 
-- Installed Pulumi CLI application
+- Java 17
+- IDE of your choice, tested on Intellij IDEA and VS Code
+- Installed Pulumi CLI application and a created account 
+  ([Installation Guide](https://www.pulumi.com/docs/install/))
 - Testcontainers-compatible Docker Engine, preferably Docker Desktop
   (see the requirements [here](https://www.testcontainers.org/supported_docker_environment/))
-- Java 17
-- Any IDE that you like, tested on IntellijIDEA and VS Code
 
 For Java tools, consider using [sdkman](https://sdkman.io/) for the demo to make it easier:
 
