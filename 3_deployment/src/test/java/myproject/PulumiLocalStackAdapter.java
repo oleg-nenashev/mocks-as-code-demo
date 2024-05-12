@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
-public class PulumiLocalAdapter {
+public class PulumiLocalStackAdapter {
 
     static BlockingQueue<Runnable> QUEUE = new LinkedBlockingQueue<>();
     static ExecutorService EXECUTOR_SERVICE = new ThreadPoolExecutor(1, 5, 5, TimeUnit.SECONDS, QUEUE);
@@ -28,7 +28,7 @@ public class PulumiLocalAdapter {
     static boolean CONFIGURED = false;
     static String STACK_NAME;
 
-    private static final Logger LOGGER = Logger.getLogger(PulumiLocalAdapter.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(PulumiLocalStackAdapter.class.getName());
 
     public static void configure(LocalStackContainer container, String stack, File workDir) throws IOException {
         final PulumiConfig project = PulumiConfig.read(new File(workDir, "../Pulumi.yaml"));
@@ -58,7 +58,7 @@ public class PulumiLocalAdapter {
 
     public static void run(File workDir, String ... cli) throws IOException, InterruptedException {
         if (!CONFIGURED) {
-            String message = "Pulumi adapter for LocalStack is not configured with " + PulumiLocalAdapter.class + "#configure()";
+            String message = "Pulumi adapter for LocalStack is not configured with " + PulumiLocalStackAdapter.class + "#configure()";
             LOGGER.severe(message);
             Assert.fail(message);
         }
@@ -112,9 +112,9 @@ public class PulumiLocalAdapter {
         }
 
         private static String loadConfigTemplate() throws IOException {
-            try (InputStream is = PulumiLocalAdapter.class.getResourceAsStream("PulumiLocalAdapter/" + CONFIG_TEMPLATE_FILE)) {
+            try (InputStream is = PulumiLocalStackAdapter.class.getResourceAsStream("PulumiLocalStackAdapter/" + CONFIG_TEMPLATE_FILE)) {
                 if (is == null) {
-                    throw new IOException("Cannot load the template config resource from " + PulumiLocalAdapter.class + ":" + CONFIG_TEMPLATE_FILE);
+                    throw new IOException("Cannot load the template config resource from " + PulumiLocalStackAdapter.class + ":" + CONFIG_TEMPLATE_FILE);
                 }
                 try (InputStreamReader isr = new InputStreamReader(is);
                      BufferedReader reader = new BufferedReader(isr)) {

@@ -32,7 +32,7 @@ public class PulumiLocalTest {
     static void beforeAll() throws IOException, InterruptedException {
         String QUEUE_NAME = UUID.randomUUID().toString();
         WORK_DIR = new File(".");
-        PulumiLocalAdapter.configure(localstack, STACK_NAME, WORK_DIR);
+        PulumiLocalStackAdapter.configure(localstack, STACK_NAME, WORK_DIR);
 
 
         // Clean or Init the stack. We use it in parallel, and there might be stale resources Pulumi server does not know how delete from terminated LocalStack
@@ -73,7 +73,7 @@ public class PulumiLocalTest {
 
         // TODO: Move Init to BeforeClass
 
-        PulumiLocalAdapter.up(WORK_DIR);
+        PulumiLocalStackAdapter.up(WORK_DIR);
     }
 
 }
