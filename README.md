@@ -16,6 +16,11 @@ This demo is created for the Mocks as Code workshop by Oleg Nenashev.
 The same demo setup can be implemented purely in Kotlin,
 Golang, Python or any other language supported by Pulumi and Testcontainers.
 
+## Presentation
+
+The presentation for this workshop can be found
+[here](https://speakerdeck.com/onenashev/workshop-mocks-as-code-in-cfg-mgmt)
+
 ## Prerequisites
 
 - Java 17
@@ -24,6 +29,7 @@ Golang, Python or any other language supported by Pulumi and Testcontainers.
   ([Installation Guide](https://www.pulumi.com/docs/install/))
 - Testcontainers-compatible Docker Engine, preferably Docker Desktop
   (see the requirements [here](https://www.testcontainers.org/supported_docker_environment/))
+- Free-tire account on [Gradle Build Scan / Develocity](https://scans.gradle.com/) 
 
 For Java tools, consider using [sdkman](https://sdkman.io/) for the demo to make it easier:
 
