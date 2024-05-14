@@ -5,7 +5,6 @@ plugins {
 rootProject.name = 'mocks-as-code-workshop'
 
 include('1_application')
-include('2_testcontainers-demo')
 include('3_deployment')
 
 develocity {

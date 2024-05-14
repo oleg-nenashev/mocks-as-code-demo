@@ -1,0 +1,12 @@
+target/
+
+.vscode/
+/.project
+/.classpath
+/.settings/
+/bin/
+
+.idea
+*.iml
+*.ipr
+*.iws
