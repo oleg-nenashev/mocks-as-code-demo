@@ -23,9 +23,9 @@ class TodoRepositoryTest {
     @BeforeEach
     void setUp() {
         repository.deleteAll();
-        repository.save(new Todo(null, "Todo Item 1", true, 1));
-        repository.save(new Todo(null, "Todo Item 2", false, 2));
-        repository.save(new Todo(null, "Todo Item 3", false, 3));
+        repository.save(new Todo(null, "Todo Item 1", null, true, 1));
+        repository.save(new Todo(null, "Todo Item 2", null, false, 2));
+        repository.save(new Todo(null, "Todo Item 3", null, false, 3));
     }
 
     @Test

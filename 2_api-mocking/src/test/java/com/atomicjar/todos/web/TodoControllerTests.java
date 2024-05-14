@@ -43,8 +43,8 @@ public class TodoControllerTests {
     @Test
     void shouldGetAllTodos() {
         List<Todo> todos = List.of(
-                new Todo(null, "Todo Item 1", false, 1),
-                new Todo(null, "Todo Item 2", false, 2)
+                new Todo(null, "Todo Item 1", null, false, 1),
+                new Todo(null, "Todo Item 2", null, false, 2)
         );
         todoRepository.saveAll(todos);
 
@@ -59,7 +59,7 @@ public class TodoControllerTests {
 
     @Test
     void shouldGetTodoById() {
-        Todo todo = todoRepository.save(new Todo(null, "Todo Item 1", false, 1));
+        Todo todo = todoRepository.save(new Todo(null, "Todo Item 1", null, false, 1));
 
         given()
                 .contentType(ContentType.JSON)
@@ -96,7 +96,7 @@ public class TodoControllerTests {
 
     @Test
     void shouldDeleteTodoById() {
-        Todo todo = todoRepository.save(new Todo(null, "Todo Item 1", false, 1));
+        Todo todo = todoRepository.save(new Todo(null, "Todo Item 1", null, false, 1));
 
         assertThat(todoRepository.findById(todo.getId())).isPresent();
         given()
