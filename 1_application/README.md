@@ -15,6 +15,12 @@ This is sample code for [Testing AWS Service Integrations using LocalStack](http
 Make sure you have Java 8+ and a [compatible Docker environment](https://www.testcontainers.org/supported_docker_environment/) installed.
 The necessary Java version will be installed by Gradle.
 
+### 2. Run the app
+
+```shell
+../gradlew bootUp
+```
+
 ### 2. Run Tests
 
 Run the command to run the tests.
