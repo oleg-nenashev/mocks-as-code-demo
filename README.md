@@ -23,13 +23,13 @@ The presentation for this workshop can be found
 
 ## Prerequisites
 
-- Java 17
+- Java 17 or 21
 - IDE of your choice, tested on Intellij IDEA and VS Code
 - Installed Pulumi CLI application and a created account 
   ([Installation Guide](https://www.pulumi.com/docs/install/))
 - Testcontainers-compatible Docker Engine, preferably Docker Desktop
   (see the requirements [here](https://www.testcontainers.org/supported_docker_environment/))
-- Free-tire account on [Gradle Build Scan / Develocity](https://scans.gradle.com/) 
+- Free-tier account on [Gradle Build Scan / Develocity](https://scans.gradle.com/) 
 
 For Java tools, consider using [sdkman](https://sdkman.io/) for the demo to make it easier:
 
