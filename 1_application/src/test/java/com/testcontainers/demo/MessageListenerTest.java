@@ -35,37 +35,18 @@ class MessageListenerTest {
   static void overrideProperties(DynamicPropertyRegistry registry) {
     registry.add("app.bucket", () -> BUCKET_NAME);
     registry.add("app.queue", () -> QUEUE_NAME);
-    registry.add(
-      "spring.cloud.aws.region.static",
-      () -> localStack.getRegion()
-    );
-    registry.add(
-      "spring.cloud.aws.credentials.access-key",
-      () -> localStack.getAccessKey()
-    );
-    registry.add(
-      "spring.cloud.aws.credentials.secret-key",
-      () -> localStack.getSecretKey()
-    );
-    registry.add(
-      "spring.cloud.aws.s3.endpoint",
-      () -> localStack.getEndpointOverride(S3).toString()
-    );
-    registry.add(
-      "spring.cloud.aws.sqs.endpoint",
-      () -> localStack.getEndpointOverride(SQS).toString()
-    );
+    registry.add("spring.cloud.aws.region.static", () -> localStack.getRegion());
+    registry.add("spring.cloud.aws.credentials.access-key", () -> localStack.getAccessKey());
+    registry.add("spring.cloud.aws.credentials.secret-key", () -> localStack.getSecretKey());
+    registry.add("spring.cloud.aws.s3.endpoint", () -> localStack.getEndpointOverride(S3).toString());
+    registry.add("spring.cloud.aws.sqs.endpoint", () -> localStack.getEndpointOverride(SQS).toString());
   }
 
   @BeforeAll
   static void beforeAll() throws IOException, InterruptedException {
     localStack.execInContainer("awslocal", "s3", "mb", "s3://" + BUCKET_NAME);
     localStack.execInContainer(
-      "awslocal",
-      "sqs",
-      "create-queue",
-      "--queue-name",
-      QUEUE_NAME
+      "awslocal", "sqs", "create-queue", "--queue-name", QUEUE_NAME
     );
   }
 
