@@ -55,7 +55,7 @@ dependencies {
     testImplementation("org.wiremock.integrations:wiremock-spring-boot:3.6.0") {
         exclude(group = "com.github.jknack.handlebars.java")
     }
-    testImplementation("org.eclipse.jetty:jetty-reactive-httpclient:4.0.9")
+    testImplementation("org.eclipse.jetty:jetty-reactive-httpclient:4.0.10")
 
     compileOnly("org.springframework.boot:spring-boot-devtools")
 
