@@ -10,7 +10,7 @@ import org.springframework.boot.gradle.tasks.run.BootRun
 plugins {
     `java-library`
     `maven-publish`
-    id("org.springframework.boot") version "3.4.5"
+    id("org.springframework.boot") version "3.5.3"
 }
 
 group = "com.example"
@@ -59,10 +59,8 @@ dependencies {
 
     compileOnly("org.springframework.boot:spring-boot-devtools")
 
-    // If we use the dev services mode
-    if (project.hasProperty("withDevServices")) {
-        developmentOnly("org.springframework.boot:spring-boot-docker-compose")
-    }
+    // We use the dev services mode
+    developmentOnly("org.springframework.boot:spring-boot-docker-compose:3.5.3")
 }
 
 publishing {

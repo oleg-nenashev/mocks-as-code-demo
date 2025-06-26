@@ -11,6 +11,6 @@ develocity {
     }
 }
 
-include("1_application")
 include("2_api-mocking")
-include("3_deployment")
+include("3_localstack-application")
+include("4_deployment-and-pulumi")
