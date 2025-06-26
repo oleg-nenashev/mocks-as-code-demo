@@ -46,7 +46,7 @@ dependencies {
     testImplementation("org.wiremock.integrations.testcontainers:wiremock-testcontainers-module:1.0-alpha-15")
     testImplementation(libs.io.rest.assured.rest.assured)
 
-    testImplementation("org.wiremock.integrations:wiremock-spring-boot:3.6.0") {
+    testImplementation("org.wiremock.integrations:wiremock-spring-boot:3.10.0") {
         exclude(group = "com.github.jknack.handlebars.java")
     }
     testImplementation("org.eclipse.jetty:jetty-reactive-httpclient:4.0.9")
