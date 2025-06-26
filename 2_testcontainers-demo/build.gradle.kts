@@ -12,13 +12,6 @@ repositories {
 group = "mypackage"
 description = "Demos for Testcontainers tests"
 
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
-        vendor = JvmVendorSpec.TEMURIN
-    }
-}
-
 dependencies {
     implementation(enforcedPlatform("org.testcontainers:testcontainers-bom:1.19.8"))
     implementation(enforcedPlatform("software.amazon.awssdk:bom:2.21.1"))

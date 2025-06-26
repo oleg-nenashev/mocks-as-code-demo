@@ -14,17 +14,18 @@ repositories {
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
+        languageVersion = JavaLanguageVersion.of(21)
         vendor = JvmVendorSpec.ADOPTIUM
     }
 }
 
 ext {
-    set('testcontainers.version', "1.19.3")
     set('awspringVersion', "3.0.3")
 }
 
 dependencies {
+    implementation platform('org.testcontainers:testcontainers-bom:1.21.2')
+
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'io.awspring.cloud:spring-cloud-aws-starter-s3'
     implementation 'io.awspring.cloud:spring-cloud-aws-starter-sqs'

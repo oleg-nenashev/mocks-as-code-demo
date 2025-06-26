@@ -1,0 +1,79 @@
+import org.gradle.kotlin.dsl.implementation
+import org.springframework.boot.gradle.tasks.run.BootRun
+
+plugins {
+    `java-library`
+    `maven-publish`
+    id("org.springframework.boot") version "3.4.5"
+}
+
+group = "com.example"
+version = "0.0.1-SNAPSHOT"
+description = "Sample Todo application for Testcontainers and WireMock demos "
+
+repositories {
+    mavenLocal()
+    maven { url = uri("https://repo.spring.io/")}
+    maven {
+        url = uri("https://repo.maven.apache.org/maven2/")
+    }
+}
+
+dependencies {
+    implementation(platform(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES))
+    implementation(platform("org.testcontainers:testcontainers-bom:1.21.0"))
+    implementation(platform("org.springframework.ai:spring-ai-bom:1.0.0-M6"))
+    implementation("org.flywaydb:flyway-database-postgresql")
+
+    implementation("org.springframework.ai:spring-ai-openai-spring-boot-starter")
+    implementation("org.springframework.ai:spring-ai-pgvector-store-spring-boot-starter")
+
+    api(libs.org.springframework.boot.spring.boot.starter.data.jpa)
+    api(libs.org.springframework.boot.spring.boot.starter.validation)
+    api(libs.org.springframework.boot.spring.boot.starter.web)
+    api(libs.org.flywaydb.flyway.core)
+    api(libs.org.springframework.spring.webflux)
+    runtimeOnly(libs.org.springframework.boot.spring.boot.devtools)
+    runtimeOnly(libs.org.postgresql.postgresql)
+    runtimeOnly(libs.com.mysql.mysql.connector.j)
+
+    testImplementation(libs.org.springframework.boot.spring.boot.starter.test)
+    testImplementation(libs.org.springframework.boot.spring.boot.testcontainers)
+
+    testImplementation(libs.org.testcontainers.junit.jupiter)
+    testImplementation(libs.org.testcontainers.postgresql)
+    testImplementation(libs.org.testcontainers.mysql)
+    testImplementation("org.wiremock.integrations.testcontainers:wiremock-testcontainers-module:1.0-alpha-15")
+    testImplementation(libs.io.rest.assured.rest.assured)
+
+    testImplementation("org.wiremock.integrations:wiremock-spring-boot:3.6.0") {
+        exclude(group = "com.github.jknack.handlebars.java")
+    }
+    testImplementation("org.eclipse.jetty:jetty-reactive-httpclient:4.0.9")
+
+    compileOnly("org.springframework.boot:spring-boot-devtools")
+
+    // If we use the dev services mode
+    if (project.hasProperty("withDevServices")) {
+        developmentOnly("org.springframework.boot:spring-boot-docker-compose")
+    }
+
+
+}
+
+tasks.bootRun {
+    mainClass.set("com.example.todos.Application")
+    debugOptions {
+        port = 5005
+    }
+}
+
+tasks.named<Test>("test") {
+    useJUnitPlatform()
+}
+
+publishing {
+    publications.create<MavenPublication>("maven") {
+        from(components["java"])
+    }
+}
