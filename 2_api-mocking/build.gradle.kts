@@ -10,7 +10,7 @@ import org.springframework.boot.gradle.tasks.run.BootRun
 plugins {
     `java-library`
     `maven-publish`
-    id("org.springframework.boot") version "3.4.5"
+    id("org.springframework.boot") version "3.5.3"
 }
 
 group = "com.example"
