@@ -1,4 +1,4 @@
-# Mocks as Code for Configuration Management. Demo
+# Workshop - AWS Mocks as Code for Configuration Management
 
 Can you do full-stack development with Java? You can!
 And what about full-stack platform engineering? You can do it too!
@@ -6,13 +6,13 @@ In this demo, we build a full-Java implementation for all key aspects of an appl
 
 - The application itself - Spring Boot
 - Build automation - Gradle Build Tool, aka Gradle
-- Test automation - with Testcontainers, WireMock, LocalStack and other Java tools
-- Configuration Management - with [Pulumi for Java](https://www.pulumi.com/docs/languages-sdks/java/)
-- All the build logic - with [Gradle Build Tool](https://gradle.org/), a.k.a Gradle.
+- Test automation with Testcontainers, WireMock, LocalStack and other Java tools
+- Configuration Management with [Pulumi for Java](https://www.pulumi.com/docs/languages-sdks/java/)
+- All the build logic with [Gradle Build Tool](https://gradle.org/), a.k.a Gradle.
   We will also use [Gradle Build Scan](https://docs.gradle.org/current/userguide/build_scans.html) for troubleshooting
   the Pulumi SDK issues.
 
-This demo is created for the Mocks as Code workshop by Oleg Nenashev.
+This demo is created for the AWS Mocks as Code workshop by Oleg Nenashev.
 The same demo setup can be implemented purely in Kotlin,
 Golang, Python or any other language supported by Pulumi and Testcontainers.
 
@@ -24,7 +24,7 @@ The presentation for this workshop can be found
 ## Prerequisites
 
 - Java 17 or 21
-- IDE of your choice, tested on Intellij IDEA and VS Code
+- IDE of your choice, tested on IntelliJ IDEA and VS Code
 - Installed Pulumi CLI application and a created account 
   ([Installation Guide](https://www.pulumi.com/docs/install/))
 - Testcontainers-compatible Docker Engine, preferably Docker Desktop
@@ -41,12 +41,13 @@ sdk env
 ## Workshop Steps
 
 1. Setting up the environment
+2. Optional Introductions to the tools we use - Testcontainers, LocalStack, WireMock, Spring Boot Dev Services, etc.
 2. Testing AWS Service Integrations using LocalStack and Testcontainers,
    similar to [this guide](https://testcontainers.com/guides/testing-aws-service-integrations-using-localstack/)
 3. Mocking service APIs with WireMock
 4. Infrastructure-as-Code with Pulumi and Pulumi SDK for Java, and using the same stack for
    Pulumi deployment integration testing
-5. Advanced troubleshooting and observability of the configurations with Gradle Build Scan
+5. Advanced troubleshooting and observability of the configurations with Gradle's Build Scan
 
 ## Credits
 
