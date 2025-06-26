@@ -1,7 +1,9 @@
 # Workshop - AWS Mocks as Code for Configuration Management
 
-Can you do full-stack development with Java? You can!
+Can you do full-stack development with Java? Yes, you can!
 And what about full-stack platform engineering? You can do it too!
+And yes, you still need to test it.
+
 In this demo, we build a full-Java implementation for all key aspects of an application:
 
 - The application itself - Spring Boot
@@ -9,10 +11,11 @@ In this demo, we build a full-Java implementation for all key aspects of an appl
 - Test automation with Testcontainers, WireMock, LocalStack and other Java tools
 - Configuration Management with [Pulumi for Java](https://www.pulumi.com/docs/languages-sdks/java/)
 - All the build logic with [Gradle Build Tool](https://gradle.org/), a.k.a Gradle.
-  We will also use [Gradle Build Scan](https://docs.gradle.org/current/userguide/build_scans.html) for troubleshooting
-  the Pulumi SDK issues.
+  We will also use [Build Scan](https://docs.gradle.org/current/userguide/build_scans.html) from Gradle for troubleshooting
+  the Pulumi SDK issues, as well as any other failures we will encounter.
 
 This demo is created for the AWS Mocks as Code workshop by Oleg Nenashev.
+Last presented - Platformcon 2025.
 The same demo setup can be implemented purely in Kotlin,
 Golang, Python or any other language supported by Pulumi and Testcontainers.
 
@@ -23,7 +26,7 @@ The presentation for this workshop can be found
 
 ## Prerequisites
 
-- Java 17 or 21
+- Java 21
 - IDE of your choice, tested on IntelliJ IDEA and VS Code
 - Installed Pulumi CLI application and a created account 
   ([Installation Guide](https://www.pulumi.com/docs/install/))
@@ -85,3 +88,7 @@ unless specified differently.
 
 The application code is based on the [Testing AWS Service Integrations using LocalStack](https://github.com/testcontainers/tc-guide-testing-aws-service-integrations-using-localstack) demo,
 and, hence, it uses the MIT License.
+
+## Contributing
+
+Pull requests and feedback are welcome!
