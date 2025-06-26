@@ -1,0 +1,29 @@
+server:
+  port: 8080
+
+#hackernews:
+#  base-url: http://localhost:5433
+#  base-url: https://hacker-news.firebaseio.com/v0/
+
+spring:
+  application:
+    name: todo-list
+  datasource:
+    url: jdbc:postgresql://localhost:5432/testcontainers_wiremock_demo
+    username: postgres
+    password: postgres
+  jpa:
+    show-sql: true
+  sql:
+    init:
+      mode: always
+  ai:
+    openai:
+      chat:
+        enabled: true
+        options:
+          model: ai/gemma3-qat:1B-Q4_K_M #ai/qwen3:30B-A3B-Q4_K_M
+      base-url: http://localhost:12434/engines/
+      # For recording
+      #base-url: http://localhost:8081/
+      api-key: "spring-boot, please don't yell at me"

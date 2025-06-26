@@ -1,0 +1,94 @@
+{
+  "mappings" : [ {
+    "id" : "b0ac6208-03be-490f-a043-0f0407eac029",
+    "name" : "v1_chat_completions",
+    "request" : {
+      "url" : "/v1/chat/completions",
+      "method" : "POST"
+    },
+    "response" : {
+      "status" : 301,
+      "headers" : {
+        "Date" : "Thu, 22 May 2025 10:20:06 GMT",
+        "Location" : "/engines/v1/chat/completions"
+      }
+    },
+    "uuid" : "b0ac6208-03be-490f-a043-0f0407eac029",
+    "persistent" : true
+  }, {
+    "id" : "74fc2eba-11ae-4d11-a867-22f00db24af4",
+    "name" : "engines_v1_chat_completions",
+    "request" : {
+      "url" : "/engines/v1/chat/completions",
+      "method" : "GET"
+    },
+    "response" : {
+      "status" : 301,
+      "body" : "<a href=\"/engines/engines/v1/chat/completions\">Moved Permanently</a>.\n\n",
+      "headers" : {
+        "Date" : "Thu, 22 May 2025 10:20:06 GMT",
+        "Location" : "/engines/engines/v1/chat/completions",
+        "Content-Type" : "text/html; charset=utf-8"
+      }
+    },
+    "uuid" : "74fc2eba-11ae-4d11-a867-22f00db24af4",
+    "persistent" : true
+  }, {
+    "id" : "e1b884c7-4c16-4918-8650-2dd28092581d",
+    "name" : "engines_engines_v1_chat_completions",
+    "request" : {
+      "url" : "/engines/engines/v1/chat/completions",
+      "method" : "GET"
+    },
+    "response" : {
+      "status" : 301,
+      "body" : "<a href=\"/engines/engines/engines/v1/chat/completions\">Moved Permanently</a>.\n\n",
+      "headers" : {
+        "Date" : "Thu, 22 May 2025 10:20:06 GMT",
+        "Location" : "/engines/engines/engines/v1/chat/completions",
+        "Content-Type" : "text/html; charset=utf-8"
+      }
+    },
+    "uuid" : "e1b884c7-4c16-4918-8650-2dd28092581d",
+    "persistent" : true
+  }, {
+    "id" : "68f69147-471b-468d-8670-627bdfc868de",
+    "name" : "engines_engines_engines_v1_chat_completions",
+    "request" : {
+      "url" : "/engines/engines/engines/v1/chat/completions",
+      "method" : "GET"
+    },
+    "response" : {
+      "status" : 301,
+      "body" : "<a href=\"/engines/engines/engines/engines/v1/chat/completions\">Moved Permanently</a>.\n\n",
+      "headers" : {
+        "Date" : "Thu, 22 May 2025 10:20:06 GMT",
+        "Location" : "/engines/engines/engines/engines/v1/chat/completions",
+        "Content-Type" : "text/html; charset=utf-8"
+      }
+    },
+    "uuid" : "68f69147-471b-468d-8670-627bdfc868de",
+    "persistent" : true
+  }, {
+    "id" : "ef2ceafd-24f9-4b66-ae95-f3d4aa63d3b8",
+    "name" : "engines_engines_engines_engines_v1_chat_completions",
+    "request" : {
+      "url" : "/engines/engines/engines/engines/v1/chat/completions",
+      "method" : "GET"
+    },
+    "response" : {
+      "status" : 301,
+      "body" : "<a href=\"/engines/engines/engines/engines/engines/v1/chat/completions\">Moved Permanently</a>.\n\n",
+      "headers" : {
+        "Date" : "Thu, 22 May 2025 10:20:06 GMT",
+        "Location" : "/engines/engines/engines/engines/engines/v1/chat/completions",
+        "Content-Type" : "text/html; charset=utf-8"
+      }
+    },
+    "uuid" : "ef2ceafd-24f9-4b66-ae95-f3d4aa63d3b8",
+    "persistent" : true
+  } ],
+  "meta" : {
+    "total" : 5
+  }
+}

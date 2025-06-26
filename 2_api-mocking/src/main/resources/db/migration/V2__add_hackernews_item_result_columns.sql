@@ -1,0 +1,5 @@
+ALTER TABLE todos
+ADD COLUMN summary TEXT,
+ADD COLUMN priority VARCHAR(50),
+ADD COLUMN time_estimate VARCHAR(50),
+ADD COLUMN sentiment VARCHAR(50);
