@@ -5,7 +5,7 @@
 com-github-wiremock-wiremock-testcontainers-java = "1.0-alpha-7"
 com-mysql-mysql-connector-j = "8.0.33"
 io-rest-assured-rest-assured = "5.3.1"
-org-flywaydb-flyway-core = "9.16.3"
+org-flywaydb-flyway-core = "11.10.0"
 org-postgresql-postgresql = "42.6.0"
 org-springframework-boot-spring-boot-devtools = "3.1.2"
 org-springframework-boot-spring-boot-starter-data-jpa = "3.1.2"
